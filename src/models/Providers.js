@@ -53,6 +53,7 @@ providerSchema.methods.toJSON = function () {
     return providerObj
 }
 
+
 const Provider = mongoose.model('Providers', providerSchema)
 
 export default Provider
