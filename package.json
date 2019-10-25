@@ -26,7 +26,8 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.7.7"
+    "mongoose": "^5.7.7",
+    "validator": "^11.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
