@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run test",
-    "start": "nodemon --exec babel-node index.js"
+    "start": "nodemon --exec babel-node index.js",
+    "connect": "nodemon --exec babel-node src/connect.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,8 @@
   "homepage": "https://github.com/Kasulejoseph/service-providers#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.7.7"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
