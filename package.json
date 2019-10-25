@@ -4,7 +4,9 @@
   "description": "challenge accepted",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "npm run test",
+    "start": "nodemon --exec babel-node index.js",
+    "connect": "nodemon --exec babel-node src/connect.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,16 @@
   "bugs": {
     "url": "https://github.com/Kasulejoseph/service-providers/issues"
   },
-  "homepage": "https://github.com/Kasulejoseph/service-providers#readme"
+  "homepage": "https://github.com/Kasulejoseph/service-providers#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
+    "nodemon": "^1.19.4"
+  }
 }
