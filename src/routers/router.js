@@ -6,5 +6,6 @@ const router = express.Router()
 router.post('/providers', Providers.addProvider)
 router.get('/providers', Providers.getAllProvider)
 router.get('/providers/:id', Providers.getSingleProvider)
+router.put('/providers/:id', Providers.updateProvider)
 
 export default router
