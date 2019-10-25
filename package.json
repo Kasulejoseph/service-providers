@@ -1,0 +1,24 @@
+{
+  "name": "service-providers",
+  "version": "1.0.0",
+  "description": "challenge accepted",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kasulejoseph/service-providers.git"
+  },
+  "keywords": [
+    "service",
+    "providers",
+    "hackerearth"
+  ],
+  "author": "kasule joseph",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kasulejoseph/service-providers/issues"
+  },
+  "homepage": "https://github.com/Kasulejoseph/service-providers#readme"
+}
