@@ -19,7 +19,19 @@ class Providers{
     }
     static async getAllProvider(req, res){ 
         try {
-            const data = await Provider.find()
+            const sort = {}
+            if(req.query.sort) {
+                const getParts = req.query.sort.split('-')                
+                sort[getParts[0]] = getParts[0] === 'lowest_price' ? 1 : -1
+            }
+            const data = await Provider.find({},
+            null,
+            {
+              skip: parseInt(req.query.skip),
+              limit: parseInt(req.query.limit),
+              sort  
+            } 
+            )
             res.send({
                 status: 200,
                 message: 'success',

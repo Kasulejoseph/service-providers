@@ -3,9 +3,9 @@ import Providers from '../controllers/Providers'
 const router = express.Router()
 
 // TODO catch validator errors
-router.post('/providers', Providers.addProvider)
-router.get('/providers', Providers.getAllProvider)
-router.get('/providers/:id', Providers.getSingleProvider)
-router.put('/providers/:id', Providers.updateProvider)
+router.post('/api/isp', Providers.addProvider)
+router.get('/api/isp', Providers.getAllProvider)
+router.get('/api/isp/:id', Providers.getSingleProvider)
+router.put('/api/isp/:id', Providers.updateProvider)
 
 export default router
