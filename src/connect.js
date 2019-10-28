@@ -3,11 +3,10 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
 dotenv.config()
-const mongodb_connection_string = process.env.LOCAL_URL
-if(process.env.OPENSHIFT_MONGODB_DB_URL){
-    mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + db_name;
+let mongodb_connection_string = process.env.LOCAL_URL
+if(process.env.ENV == 'production'){
+    mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL;
   }
-
 mongoose.connect(mongodb_connection_string, {
     useNewUrlParser: true,
     useCreateIndex: true,
