@@ -35,7 +35,7 @@ const providerSchema = mongoose.Schema({
         lowercase: true,
         validate(value) {
             if(!validator.isEmail(value)){
-                throw Error('Invalid Email Address')
+                throw new Error('Invalid Email Address')
             }
         }
     },

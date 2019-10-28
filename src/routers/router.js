@@ -7,5 +7,8 @@ router.post('/api/isp', Providers.addProvider)
 router.get('/api/isp', Providers.getAllProvider)
 router.get('/api/isp/:id', Providers.getSingleProvider)
 router.put('/api/isp/:id', Providers.updateProvider)
+router.get('/', (req, res) => {
+    res.send({message: 'Welcome Home'})
+})
 
 export default router

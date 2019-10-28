@@ -2,8 +2,8 @@ import Provider from '../models/Providers'
 class Providers{
     static async addProvider(req, res){
         try {
-            const data = await new Provider(req.body)
-            data.save()
+            const data = new Provider(req.body)
+            await data.save()
             res.send({
                 status: 201,
                 message: 'success',
