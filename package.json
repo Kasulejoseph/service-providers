@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run test",
-    "start": "node --exec babel-node index.js",
+    "start": "nodemon --exec babel-node index.js",
     "connect": "nodemon --exec babel-node src/connect.js"
   },
   "repository": {
