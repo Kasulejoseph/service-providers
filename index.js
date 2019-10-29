@@ -6,8 +6,8 @@ import './src/connect'
 const app = express()
 app.use(express.json())
 app.use(cors())
-const port = process.env.OPENSHIFT_NODEJS_PORT || 4000
-const server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+const port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080
+const server_ip_address = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || '0.0.0.0'
 app.use(router)
 app.listen(port, server_ip_address)
 
