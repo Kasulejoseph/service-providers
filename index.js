@@ -1,4 +1,5 @@
 import express from 'express'
+import 'regenerator-runtime/runtime'
 import cors from 'cors'
 import router from './src/routers/router'
 import './src/connect'
