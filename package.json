@@ -6,6 +6,7 @@
   "scripts": {
     "test": "npm run test",
     "start": "node build/index.js",
+    "dev": "nodemon index.js --exec babel-node",
     "build-src": "babel src -d build/src ",
     "build": "rm -rf build && babel index.js --out-dir ./build --source-maps && npm run build-src",
     "connect": "nodemon --exec babel-node src/connect.js"
