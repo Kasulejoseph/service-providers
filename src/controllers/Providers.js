@@ -1,6 +1,7 @@
 import Provider from '../models/Providers'
-class Providers{
-    static async addProvider(req, res){
+import paginate from '../Helper/paginate'
+class Providers {
+    static async addProvider(req, res) {
         try {
             const data = new Provider(req.body)
             await data.save()
@@ -17,25 +18,31 @@ class Providers{
             })
         }
     }
-    static async getAllProvider(req, res){ 
+    static async getAllProvider(req, res) {
         try {
             const sort = {}
-            if(req.query.sort) {
-                const getParts = req.query.sort.split('-')                
+            if (req.query.sort) {
+                const getParts = req.query.sort.split('-')
                 sort[getParts[0]] = getParts[0] === 'lowest_price' ? 1 : -1
             }
+            const count = await Provider.find({}).countDocuments()
+            const pag = paginate(req, count)       
             const data = await Provider.find({},
-            null,
-            {
-              skip: parseInt(req.query.skip),
-              limit: parseInt(req.query.limit),
-              sort  
-            } 
+                null, {
+                    skip: pag.pageNo,
+                    limit: pag.pageLimit,
+                    sort
+                }
             )
             res.send({
                 status: 200,
+                meta: {
+                    next: pag.nextPage,
+                    previous: pag.previousPage,
+                    count
+                },
                 message: 'success',
-                data
+                data,
             })
         } catch (error) {
             res.send({
@@ -45,7 +52,7 @@ class Providers{
             })
         }
     }
-    static async getSingleProvider(req, res){ 
+    static async getSingleProvider(req, res) {
         try {
             const data = await Provider.findById(req.params.id)
             res.send({
@@ -61,27 +68,32 @@ class Providers{
             })
         }
     }
-    static async updateProvider(req, res){ 
+    static async updateProvider(req, res) {
         try {
             const _id = req.params.id
-            const updateKeys = Object.keys(req.body) 
-            const toUpdateKey = ["name","lowest_price", "rating", "max_speed", "description", "contact_no","email", "image", "url"]
-            const isvalidUpadateKeys = updateKeys.every((update) => toUpdateKey.includes(update))  
-                      
-            if(!isvalidUpadateKeys) {                
+            const updateKeys = Object.keys(req.body)
+            const toUpdateKey = ["name", "lowest_price", "rating", "max_speed", "description", "contact_no", "email", "image", "url"]
+            const isvalidUpadateKeys = updateKeys.every((update) => toUpdateKey.includes(update))
+
+            if (!isvalidUpadateKeys) {
                 return res.send({
                     status: 400,
-                    message: "Fail", 
+                    message: "Fail",
                     "error": "Invalid Update Key Value"
                 })
             }
-            const serviceProvider = await Provider.findOne({_id}, {new: true, runValidator: true})
-            if(!serviceProvider) {
+            const serviceProvider = await Provider.findOne({
+                _id
+            }, {
+                new: true,
+                runValidator: true
+            })
+            if (!serviceProvider) {
                 return res.send({
                     status: 404,
                     message: "Fail",
-                    error: `service provider with id ${_id} not found`
-,                })
+                    error: `service provider with id ${_id} not found`,
+                })
             }
             updateKeys.forEach((update) => serviceProvider[update] = req.body[update])
             serviceProvider.save()
