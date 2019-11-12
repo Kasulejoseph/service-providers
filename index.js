@@ -11,6 +11,6 @@ const server_ip_address = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || '
 console.log(port, server_ip_address);
 
 app.use(router)
-app.listen(port, server_ip_address)
+app.listen(port)
 
 export default app
